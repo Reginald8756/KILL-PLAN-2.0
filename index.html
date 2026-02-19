@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The War Plan</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div id="loginScreen" class="center">
+  <h1>THE WAR PLAN</h1>
+  <input type="password" id="pinInput" maxlength="4" placeholder="Enter PIN">
+  <button onclick="checkPIN()">ENTER</button>
+</div>
+
+<div id="app" style="display:none;">
+  <h1>COMMAND CENTRE</h1>
+
+  <div class="card">
+    <p>Mortgage Balance</p>
+    <input type="number" id="mortgageBalance">
+  </div>
+
+  <div class="card">
+    <p>Car Loan Balance</p>
+    <input type="number" id="carBalance">
+  </div>
+
+  <button onclick="updatePlan()">UPDATE WAR STATUS</button>
+  <div id="status"></div>
+
+  <button onclick="changePIN()">Change PIN</button>
+</div>
+
+<script src="app.js"></script>
+
+<script>
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('service-worker.js');
+}
+</script>
+
+</body>
+</html>
