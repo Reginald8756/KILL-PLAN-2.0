@@ -1,0 +1,9 @@
+{
+  "name": "The War Plan",
+  "short_name": "War Plan",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#0e0e0e",
+  "theme_color": "#ff2b2b",
+  "icons": []
+}
