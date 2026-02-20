@@ -29,9 +29,16 @@
   </div>
 
   <button onclick="updatePlan()">UPDATE WAR STATUS</button>
-  <div id="status"></div>
 
-  <button onclick="changePIN()">Change PIN</button>
+<div class="progress-container">
+  <div class="progress-bar" id="progressBar"></div>
+</div>
+
+<div class="data-highlight" id="percentComplete"></div>
+<div class="data-highlight" id="countdown"></div>
+<div id="status"></div>
+
+<button onclick="changePIN()">Change PIN</button>
 </div>
 
 <script src="app.js"></script>
