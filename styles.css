@@ -1,5 +1,5 @@
 body {
-  background-color: #0e0e0e;
+  background-color: #070707;
   color: #ffffff;
   font-family: Arial, sans-serif;
   text-align: center;
@@ -9,7 +9,8 @@ body {
 
 h1 {
   color: #ff2b2b;
-  letter-spacing: 2px;
+  letter-spacing: 3px;
+  text-shadow: 0 0 8px rgba(255, 43, 43, 0.6);
 }
 
 .center {
@@ -20,10 +21,10 @@ input {
   padding: 12px;
   margin: 10px;
   font-size: 18px;
-  width: 200px;
+  width: 220px;
   text-align: center;
-  background: #1a1a1a;
-  color: white;
+  background: #111;
+  color: #00e5ff;
   border: 1px solid #ff2b2b;
 }
 
@@ -35,21 +36,41 @@ button {
   border: none;
   margin: 10px;
   cursor: pointer;
+  transition: 0.3s ease;
 }
 
 button:hover {
-  background: #cc0000;
+  background: #00e5ff;
+  color: #000;
 }
 
 .card {
-  background: #1a1a1a;
+  background: #111;
   padding: 20px;
   margin: 20px auto;
-  width: 250px;
+  width: 260px;
   border-left: 4px solid #ff2b2b;
+  box-shadow: 0 0 12px rgba(0, 229, 255, 0.2);
 }
 
-#status {
-  margin-top: 20px;
-  font-size: 18px;
+.progress-container {
+  width: 80%;
+  background: #222;
+  margin: 20px auto;
+  height: 20px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, #ff2b2b, #00e5ff);
+  transition: width 0.8s ease;
+}
+
+.data-highlight {
+  color: #00e5ff;
+  font-weight: bold;
+  margin-top: 10px;
 }
