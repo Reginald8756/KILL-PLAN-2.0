@@ -58,6 +58,58 @@ function loadData() {
 
 // Calculation logic
 function calculateStatus(mortgage, car) {
+  const originalBalance = 226889;
+  const weeklyTarget = 691;
+  const mortgageRate = 0.0538 / 52;
+  const today = new Date();
+  const targetDate = new Date("October 28, 2033");
+
+  const msPerWeek = 1000 * 60 * 60 * 24 * 7;
+  const weeksRemaining = Math.floor((targetDate - today) / msPerWeek);
+
+  const requiredPayment =
+    mortgage * mortgageRate /
+    (1 - Math.pow(1 + mortgageRate, -weeksRemaining));
+
+  // Progress %
+  const percentDestroyed = ((originalBalance - mortgage) / originalBalance) * 100;
+  const progressBar = document.getElementById("progressBar");
+  progressBar.style.width = percentDestroyed + "%";
+
+  document.getElementById("percentComplete").innerText =
+    percentDestroyed.toFixed(1) + "% DESTROYED";
+
+  // Countdown
+  const totalDays = Math.floor((targetDate - today) / (1000 * 60 * 60 * 24));
+  const years = Math.floor(totalDays / 365);
+  const weeks = Math.floor((totalDays % 365) / 7);
+  const days = totalDays % 7;
+
+  document.getElementById("countdown").innerText =
+    years + " Years | " + weeks + " Weeks | " + days + " Days Remaining";
+
+  // Ahead / Behind calculation
+  const weeklyDifference = weeklyTarget - requiredPayment;
+  const daysDifference = Math.floor((weeklyDifference / weeklyTarget) * 365);
+
+  let statusText = "";
+
+  if (requiredPayment <= weeklyTarget) {
+    statusText = "ON TRACK. " + Math.abs(daysDifference) + " days ahead.";
+  } else {
+    statusText = "BEHIND. " + Math.abs(daysDifference) + " days behind.";
+  }
+
+  if (car <= 0) {
+    statusText += " REDIRECT ACTIVE.";
+  }
+
+  document.getElementById("status").innerText =
+    "Required Weekly: $" +
+    requiredPayment.toFixed(0) +
+    " | Status: " +
+    statusText;
+}
   const weeklyTarget = 691;
   const mortgageRate = 0.0538 / 52;
   const today = new Date();
