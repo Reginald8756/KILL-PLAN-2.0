@@ -110,31 +110,3 @@ function calculateStatus(mortgage, car) {
     " | Status: " +
     statusText;
 }
-  const weeklyTarget = 691;
-  const mortgageRate = 0.0538 / 52;
-  const today = new Date();
-  const targetDate = new Date("October 28, 2033");
-
-  const weeksRemaining = Math.floor((targetDate - today) / (1000 * 60 * 60 * 24 * 7));
-  const requiredPayment =
-    mortgage * mortgageRate /
-    (1 - Math.pow(1 + mortgageRate, -weeksRemaining));
-
-  let status = "";
-
-  if (requiredPayment <= weeklyTarget) {
-    status = "ON TRACK.";
-  } else {
-    status = "BEHIND. Increase payment.";
-  }
-
-  if (car <= 0) {
-    status += " REDIRECT ACTIVE.";
-  }
-
-  document.getElementById("status").innerText =
-    "Required Weekly: $" +
-    requiredPayment.toFixed(0) +
-    " | Status: " +
-    status;
-}
