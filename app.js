@@ -61,17 +61,33 @@ function loadData() {
 // Calculation logic
 function calculateStatus(mortgage, car, redraw) {
   const originalBalance = 226889;
-  const weeklyTarget = 691;
-  const mortgageRate = 0.0538 / 52;
+  // ===== Accurate Daily Interest Simulation =====
+
+const interestRate = 0.0563;
+const weeklyPayment = 486;
+const dailyRate = interestRate / 365;
+
+let balance = mortgage - redraw;
+let totalInterest = 0;
+let days = 0;
+
+while (balance > 0 && days < 365 * 40) {
+    const interestForDay = balance * dailyRate;
+    balance += interestForDay;
+    totalInterest += interestForDay;
+
+    if (days % 7 === 0) {
+        balance -= weeklyPayment;
+    }
+
+    days++;
+}
+
+const yearsToPayoff = days / 365;
+const requiredPayment = weeklyPayment;
   const today = new Date();
   const targetDate = new Date("October 28, 2033");
 
-  const msPerWeek = 1000 * 60 * 60 * 24 * 7;
-  const weeksRemaining = Math.floor((targetDate - today) / msPerWeek);
-
-  const requiredPayment =
-    mortgage * mortgageRate /
-    (1 - Math.pow(1 + mortgageRate, -weeksRemaining));
 
   // Progress %
   const percentDestroyed = ((originalBalance - mortgage) / originalBalance) * 100;
