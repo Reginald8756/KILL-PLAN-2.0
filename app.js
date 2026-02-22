@@ -131,7 +131,7 @@ const ctx = document.getElementById("warChart").getContext("2d");
 
 const amountPaid = originalBalance - mortgage;
 const remainingBalance = mortgage;
-const redrawAvailable = car > 0 ? car : 0;
+const redrawAvailable = redraw;
 
 window.warChartInstance = new Chart(ctx, {
     type: "pie",
