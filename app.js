@@ -85,7 +85,7 @@ while (balanceNoRedraw > 0 && daysNoRedraw < 365 * 40) {
 }
 
 // ---------- Scenario 2: WITH Redraw ----------
-let balanceWithRedraw = mortgage - redraw;
+let balanceWithRedraw = Math.max(0, mortgage - redraw);
 let totalInterestWithRedraw = 0;
 let daysWithRedraw = 0;
 
@@ -105,6 +105,9 @@ while (balanceWithRedraw > 0 && daysWithRedraw < 365 * 40) {
 const interestSaved = totalInterestNoRedraw - totalInterestWithRedraw;
 const daysSaved = daysNoRedraw - daysWithRedraw;
 const yearsToPayoff = daysWithRedraw / 365;
+  document.getElementById("status").innerText =
+    "Interest Saved: $" + interestSaved.toFixed(0) +
+    " | Time Saved: " + Math.floor(daysSaved / 30) + " months";
 const requiredPayment = weeklyPayment;
   const today = new Date();
   const targetDate = new Date("October 28, 2033");
