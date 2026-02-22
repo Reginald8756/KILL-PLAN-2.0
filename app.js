@@ -36,6 +36,7 @@ function updatePlan() {
 
   localStorage.setItem("mortgage_balance", mortgage);
   localStorage.setItem("car_balance", 
+  localStorage.setItem("redraw_balance", redraw);
 
   calculateStatus(mortgage, car, redraw);
 }
