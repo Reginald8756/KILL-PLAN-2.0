@@ -78,7 +78,47 @@ function calculateStatus(mortgage, car) {
 
   document.getElementById("percentComplete").innerText =
     percentDestroyed.toFixed(1) + "% DESTROYED";
+// === PIE CHART ===
 
+// Destroy old chart if it exists (prevents stacking)
+if (window.warChartInstance) {
+    window.warChartInstance.destroy();
+}
+
+const ctx = document.getElementById("warChart").getContext("2d");
+
+const amountPaid = originalBalance - mortgage;
+const remainingBalance = mortgage;
+const redrawAvailable = car > 0 ? car : 0;
+
+window.warChartInstance = new Chart(ctx, {
+    type: "pie",
+    data: {
+        labels: ["Destroyed (Paid)", "Remaining Mortgage", "Available Redraw"],
+        datasets: [{
+            data: [amountPaid, remainingBalance, redrawAvailable],
+            backgroundColor: [
+                "#00f5ff",   // cyan destroyed
+                "#ff3b3b",   // red remaining
+                "#00ff88"    // green redraw
+            ],
+            borderWidth: 2
+        }]
+    },
+    options: {
+        responsive: true,
+        plugins: {
+            legend: {
+                labels: {
+                    color: "#ffffff",
+                    font: {
+                        size: 14
+                    }
+                }
+            }
+        }
+    }
+});
   // Countdown
   const totalDays = Math.floor((targetDate - today) / (1000 * 60 * 60 * 24));
   const years = Math.floor(totalDays / 365);
