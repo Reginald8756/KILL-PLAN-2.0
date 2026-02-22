@@ -67,23 +67,44 @@ const interestRate = 0.0563;
 const weeklyPayment = 486;
 const dailyRate = interestRate / 365;
 
-let balance = mortgage - redraw;
-let totalInterest = 0;
-let days = 0;
+// ---------- Scenario 1: NO Redraw ----------
+let balanceNoRedraw = mortgage;
+let totalInterestNoRedraw = 0;
+let daysNoRedraw = 0;
 
-while (balance > 0 && days < 365 * 40) {
-    const interestForDay = balance * dailyRate;
-    balance += interestForDay;
-    totalInterest += interestForDay;
+while (balanceNoRedraw > 0 && daysNoRedraw < 365 * 40) {
+    const interestForDay = balanceNoRedraw * dailyRate;
+    balanceNoRedraw += interestForDay;
+    totalInterestNoRedraw += interestForDay;
 
-    if (days % 7 === 0) {
-        balance -= weeklyPayment;
+    if (daysNoRedraw % 7 === 0) {
+        balanceNoRedraw -= weeklyPayment;
     }
 
-    days++;
+    daysNoRedraw++;
 }
 
-const yearsToPayoff = days / 365;
+// ---------- Scenario 2: WITH Redraw ----------
+let balanceWithRedraw = mortgage - redraw;
+let totalInterestWithRedraw = 0;
+let daysWithRedraw = 0;
+
+while (balanceWithRedraw > 0 && daysWithRedraw < 365 * 40) {
+    const interestForDay = balanceWithRedraw * dailyRate;
+    balanceWithRedraw += interestForDay;
+    totalInterestWithRedraw += interestForDay;
+
+    if (daysWithRedraw % 7 === 0) {
+        balanceWithRedraw -= weeklyPayment;
+    }
+
+    daysWithRedraw++;
+}
+
+// ===== Results =====
+const interestSaved = totalInterestNoRedraw - totalInterestWithRedraw;
+const daysSaved = daysNoRedraw - daysWithRedraw;
+const yearsToPayoff = daysWithRedraw / 365;
 const requiredPayment = weeklyPayment;
   const today = new Date();
   const targetDate = new Date("October 28, 2033");
