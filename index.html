@@ -34,9 +34,17 @@
   <div class="progress-bar" id="progressBar"></div>
 </div>
 
-<div class="data-highlight" id="percentComplete"></div>
-<div class="data-highlight" id="countdown"></div>
-<div id="status"></div>
+<div class="dashboard">
+  <div class="left-panel">
+    <div class="big-percent" id="percentComplete"></div>
+    <div class="big-countdown" id="countdown"></div>
+    <div class="big-status" id="status"></div>
+  </div>
+
+  <div class="right-panel">
+    <canvas id="warChart"></canvas>
+  </div>
+</div>
 
 <button onclick="changePIN()">Change PIN</button>
 </div>
