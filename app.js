@@ -59,7 +59,7 @@ function loadData() {
 }
 
 // Calculation logic
-function calculateStatus(mortgage, car) {
+function calculateStatus(mortgage, car, redraw) {
   const originalBalance = 226889;
   const weeklyTarget = 691;
   const mortgageRate = 0.0538 / 52;
