@@ -32,11 +32,12 @@ function changePIN() {
 function updatePlan() {
   const mortgage = parseFloat(document.getElementById("mortgageBalance").value);
   const car = parseFloat(document.getElementById("carBalance").value);
+  const redraw = parseFloat(document.getElementById("redrawBalance").value) || 0;
 
   localStorage.setItem("mortgage_balance", mortgage);
-  localStorage.setItem("car_balance", car);
+  localStorage.setItem("car_balance", 
 
-  calculateStatus(mortgage, car);
+  calculateStatus(mortgage, car, redraw);
 }
 
 // Load saved data
