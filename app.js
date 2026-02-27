@@ -1,3 +1,4 @@
+window.onload = function() {
 console.log("APP LOADED");
 // Default PIN setup
 if (!localStorage.getItem("warplan_pin")) {
@@ -212,3 +213,4 @@ window.warChartInstance = new Chart(ctx, {
     " | Status: " +
     statusText;
 }
+  };
