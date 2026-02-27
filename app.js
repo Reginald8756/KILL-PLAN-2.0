@@ -5,6 +5,20 @@ if (!localStorage.getItem("warplan_pin")) {
 
 // Check PIN
 function checkPIN() {
+  function checkPIN() {
+    alert("PIN function is running");   // <-- ADD THIS LINE
+
+    const entered = document.getElementById("pinInput").value;
+    const savedPIN = localStorage.getItem("warplan_pin");
+
+    if (entered === savedPIN) {
+        document.getElementById("loginScreen").style.display = "none";
+        document.getElementById("app").style.display = "block";
+        loadData();
+    } else {
+        alert("Incorrect PIN.");
+    }
+}
   const entered = document.getElementById("pinInput").value;
   const savedPIN = localStorage.getItem("warplan_pin");
 
