@@ -159,3 +159,4 @@ window.warChartInstance = new Chart(ctx, {
     data: {
         labels: ["Destroyed (Paid)", "Remaining Mortgage", "Available Redraw"],
         datasets: [{
+};
