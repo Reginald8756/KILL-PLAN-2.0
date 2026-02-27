@@ -52,10 +52,16 @@ function loadData() {
   if (car) {
     document.getElementById("carBalance").value = car;
   }
+const redraw = localStorage.getItem("redraw_balance") || 0;
 
-  if (mortgage && car) {
-    calculateStatus(parseFloat(mortgage), parseFloat(car));
-  }
+if (mortgage && car) {
+    calculateStatus(
+        parseFloat(mortgage),
+        parseFloat(car),
+        parseFloat(redraw)
+    );
+}
+  
 }
 
 // Calculation logic
