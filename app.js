@@ -12,6 +12,12 @@ function checkPIN() {
 
     const entered = document.getElementById("pinInput").value;
     const savedPIN = localStorage.getItem("warplan_pin");
+function checkPIN() {
+
+    alert("PIN function is running");
+
+    const entered = document.getElementById("pinInput").value;
+    const savedPIN = localStorage.getItem("warplan_pin");
 
     if (entered === savedPIN) {
         document.getElementById("loginScreen").style.display = "none";
@@ -20,6 +26,9 @@ function checkPIN() {
     } else {
         alert("Incorrect PIN.");
     }
+
+}
+    
 }
 
 // Change PIN
