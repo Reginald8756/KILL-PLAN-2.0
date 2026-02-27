@@ -44,15 +44,16 @@ function changePIN() {
 
 // Update mortgage & car data
 function updatePlan() {
-  const mortgage = parseFloat(document.getElementById("mortgageBalance").value);
-  const car = parseFloat(document.getElementById("carBalance").value);
-  const redraw = parseFloat(document.getElementById("redrawBalance").value) || 0;
 
-  localStorage.setItem("mortgage_balance", mortgage);
-  localStorage.setItem("car_balance", 
-  localStorage.setItem("redraw_balance", redraw);
+    const mortgage = parseFloat(document.getElementById("mortgageBalance").value);
+    const car = parseFloat(document.getElementById("carBalance").value);
+    const redraw = parseFloat(document.getElementById("redrawBalance").value) || 0;
 
-  calculateStatus(mortgage, car, redraw);
+    localStorage.setItem("mortgage_balance", mortgage);
+    localStorage.setItem("car_balance", car);
+    localStorage.setItem("redraw_balance", redraw);
+
+    calculateStatus(mortgage, car, redraw);
 }
 
 // Load saved data
