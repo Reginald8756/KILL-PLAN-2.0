@@ -58,14 +58,16 @@ function updatePlan() {
 // Load saved data
 function loadData() {
   const mortgage = localStorage.getItem("mortgage_balance");
-  const car = localStorage.getItem("car_balance");
+const car = localStorage.getItem("car_balance");
 
-  if (mortgage) {
+if (mortgage) {
     document.getElementById("mortgageBalance").value = mortgage;
-  }
-  if (car) {
+}
+
+if (car) {
     document.getElementById("carBalance").value = car;
-  }
+}
+
 const redraw = parseFloat(localStorage.getItem("redraw_balance")) || 0;
 
 if (mortgage && car) {
