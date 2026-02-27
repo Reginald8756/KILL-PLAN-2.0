@@ -1,3 +1,4 @@
+console.log("APP LOADED");
 // Default PIN setup
 if (!localStorage.getItem("warplan_pin")) {
   localStorage.setItem("warplan_pin", "1234");
