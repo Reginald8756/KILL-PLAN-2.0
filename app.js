@@ -23,12 +23,9 @@ function checkPIN() {
         document.getElementById("loginScreen").style.display = "none";
         document.getElementById("app").style.display = "block";
         loadData();
-    } else {
+        } else {
         alert("Incorrect PIN.");
     }
-
-}
-    
 }
 
 // Change PIN
