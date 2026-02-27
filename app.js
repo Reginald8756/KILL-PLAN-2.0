@@ -5,7 +5,6 @@ if (!localStorage.getItem("warplan_pin")) {
 
 // Check PIN
 function checkPIN() {
-  function checkPIN() {
     alert("PIN function is running");   // <-- ADD THIS LINE
 
     const entered = document.getElementById("pinInput").value;
